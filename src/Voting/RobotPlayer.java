@@ -52,6 +52,12 @@ public strictfp class RobotPlayer {
             try {
                 Direction leftUp = new Direction(-5, 2);
                 Direction leftDown = new Direction(-5, -2);
+                Direction upLeft = new Direction(-2, 5);
+                Direction upRight = new Direction(2, 5);
+                Direction rightUp = new Direction(5, 2);
+                Direction rightDown = new Direction(5, -2);
+                Direction downLeft = new Direction(-2, -5);
+                Direction downRight = new Direction(2, -5);
                 float fiveTwo = (float)(Math.sqrt(29.0));
                 float fourOne = (float) (Math.sqrt(17.0));
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
