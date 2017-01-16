@@ -52,12 +52,13 @@ public strictfp class RobotPlayer {
                 Direction dir = Direction.WEST;
                 Direction leftUp = new Direction(-5, 2);
                 float fiveTwo = (float)(Math.sqrt(29.0));
+                MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
 
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
-                    if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
+                    if(rc.senseRobotAtLocation(testLoc) != null){
 
                     }
                     else{
