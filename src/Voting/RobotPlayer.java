@@ -67,9 +67,6 @@ public strictfp class RobotPlayer {
                     System.out.println(rc.getLocation());
                 }
 
-                /*if(rc.getRoundNum() == 1){
-                    rc.hireGardener(dir);
-                } */
                 Clock.yield();
 
             } catch (Exception e) {
@@ -89,8 +86,9 @@ public strictfp class RobotPlayer {
                 Direction dir = Direction.WEST;
                 dodge();
                 if(rc.getRoundNum() == 2){
-                        rc.plantTree(dir);
+                        rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
                 }
+
                 Clock.yield();
 
             } catch (Exception e) {
