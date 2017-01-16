@@ -7,6 +7,7 @@ public strictfp class RobotPlayer {
     static RobotController rc;
     static Random myRand;
     static int ARCHON_ID = 1;
+    static int GLOCATION = 2;
 
     /**
      * run() is the method that is called when a robot is instantiated in the Battlecode world.
@@ -52,20 +53,21 @@ public strictfp class RobotPlayer {
                 Direction leftUp = new Direction(-5, 2);
                 Direction leftDown = new Direction(-5, -2);
                 float fiveTwo = (float)(Math.sqrt(29.0));
+                float fourOne = (float) (Math.sqrt(17.0));
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
 
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
+
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
-                    if(rc.senseRobotAtLocation(testLoc) != null){
+                    if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
                     }
                     else{
                         rc.hireGardener(leftUp);
+                        rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
                     }
-                    System.out.println(rc.getLocation());
                 }
-
                 Clock.yield();
 
             } catch (Exception e) {
