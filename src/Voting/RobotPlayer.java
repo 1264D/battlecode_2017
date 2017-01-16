@@ -70,11 +70,11 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 5) {
                     rc.hireGardener(leftUp);
                 }
-                if(rc.getRoundNum() == 25) {
-                    rc.hireGardener(leftDown);
+                if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, (float)Math.sqrt(9.061949))) != null ) {
+                    System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, (float)Math.sqrt(9.061949))));
                 }
 
-                /*
+/*
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
 
                     if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
@@ -90,43 +90,36 @@ public strictfp class RobotPlayer {
                                                     rc.hireGardener(downRight);
                                                     rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID(), 8);
                                                 }
-                                            }
-                                            else{
+                                            } else{
                                                 rc.hireGardener(rightUp);
                                                 rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID(), 7);
                                             }
-                                        }
-                                        else{
+                                        } else{
                                             rc.hireGardener(upLeft);
                                             rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID(), 6);
                                         }
-                                    }
-                                    else{
+                                    } else{
                                         rc.hireGardener(leftDown);
                                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID(), 5);
                                     }
-                                }
-                                else{
+                                } else{
                                     rc.hireGardener(downLeft);
                                     rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID(), 4);
                                 }
-                            }
-                            else{
+                            } else{
                                 rc.hireGardener(rightDown);
                                 rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID(), 3);
                             }
-                        }
-                        else{
-                            rc.hireGardener(upRight);
+                        } else{rc.hireGardener(upRight);
                             rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID(), 2);
                         }
-                    }
-                    else{
+                    } else{
                         rc.hireGardener(leftUp);
                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
                     }
                 }
                 */
+
                 Clock.yield();
 
             } catch (Exception e) {
