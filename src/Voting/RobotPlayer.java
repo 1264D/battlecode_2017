@@ -50,14 +50,14 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                Direction leftUp = new Direction(-5, 2);
-                Direction leftDown = new Direction(-5, -2);
-                Direction upLeft = new Direction(-2, 5);
-                Direction upRight = new Direction(2, 5);
-                Direction rightUp = new Direction(5, 2);
-                Direction rightDown = new Direction(5, -2);
-                Direction downLeft = new Direction(-2, -5);
-                Direction downRight = new Direction(2, -5);
+                Direction leftUp = new Direction(-5, 2); //loc 1
+                Direction upRight = new Direction(2, 5); //loc 2
+                Direction rightDown = new Direction(5, -2); //loc 3
+                Direction downLeft = new Direction(-2, -5); //loc 4
+                Direction leftDown = new Direction(-5, -2); //loc 5
+                Direction upLeft = new Direction(-2, 5); //loc 6
+                Direction rightUp = new Direction(5, 2); //loc 7
+                Direction downRight = new Direction(2, -5); //loc 8
                 float fiveTwo = (float)(Math.sqrt(29.0));
                 float fourOne = (float) (Math.sqrt(17.0));
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
@@ -76,8 +76,7 @@ public strictfp class RobotPlayer {
                                             if(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null){
                                                 if(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null){
 
-                                                }
-                                                else{
+                                                } else {
                                                     rc.hireGardener(downRight);
                                                     rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID(), 8);
                                                 }
@@ -134,8 +133,10 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
                 Direction dir = Direction.WEST;
-                System.out.println(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x);
-                //if(rc.getLocation() != )
+                float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
+                float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
+                if (rc.getLocation() != )
+
                 if(rc.getRoundNum() == 2){
                         rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
 
