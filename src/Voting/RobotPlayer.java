@@ -62,7 +62,7 @@ public strictfp class RobotPlayer {
                 float fourOne = (float) (Math.sqrt(17.0));
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
 
-                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
+                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) >= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
 
