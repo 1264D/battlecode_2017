@@ -68,6 +68,49 @@ public strictfp class RobotPlayer {
 
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
                     if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
+                        if(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null){
+                            if(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null){
+                                if(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null){
+                                    if(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null){
+                                        if(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null){
+                                            if(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null){
+                                                if(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null){
+
+                                                }
+                                                else{
+                                                    rc.hireGardener(downRight);
+                                                    rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID(), 8);
+                                                }
+                                            }
+                                            else{
+                                                rc.hireGardener(rightUp);
+                                                rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID(), 7);
+                                            }
+                                        }
+                                        else{
+                                            rc.hireGardener(upLeft);
+                                            rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID(), 6);
+                                        }
+                                    }
+                                    else{
+                                        rc.hireGardener(leftDown);
+                                        rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID(), 5);
+                                    }
+                                }
+                                else{
+                                    rc.hireGardener(downLeft);
+                                    rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID(), 4);
+                                }
+                            }
+                            else{
+                                rc.hireGardener(rightDown);
+                                rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID(), 3);
+                            }
+                        }
+                        else{
+                            rc.hireGardener(upRight);
+                            rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID(), 2);
+                        }
                     }
                     else{
                         rc.hireGardener(leftUp);
