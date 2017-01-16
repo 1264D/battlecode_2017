@@ -1,6 +1,8 @@
 package Voting;
 import battlecode.common.*;
 import java.util.*;
+
+import static battlecode.common.RobotInfo.*;
 import static java.lang.Math.sqrt;
 
 public strictfp class RobotPlayer {
@@ -62,11 +64,19 @@ public strictfp class RobotPlayer {
                 float fourOne = (float) (Math.sqrt(17.0));
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
 
-                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) >= rc.getID()){
+                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
+                if(rc.getRoundNum() == 5) {
+                    rc.hireGardener(leftUp);
+                }
+                if(rc.getRoundNum() == 25) {
+                    rc.hireGardener(leftDown);
+                }
 
+                /*
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
+
                     if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
                         if(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null){
                             if(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null){
@@ -116,6 +126,7 @@ public strictfp class RobotPlayer {
                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
                     }
                 }
+                */
                 Clock.yield();
 
             } catch (Exception e) {
@@ -135,10 +146,12 @@ public strictfp class RobotPlayer {
                 Direction dir = Direction.WEST;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
-                if (rc.getLocation() != )
+                //if (rc.getLocation() != )
 
+                float myloc = rc.getLocation().x;
+                System.out.println(myloc);
                 if(rc.getRoundNum() == 2){
-                        rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
+                        //rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
 
                 }
 
