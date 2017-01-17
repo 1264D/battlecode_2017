@@ -94,30 +94,30 @@ public strictfp class RobotPlayer {
                                                 }
                                             } else {
                                                 rc.hireGardener(rightUp);
-                                                rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID(), 7);
+                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID()), 7);
                                             }
                                         } else {
                                             rc.hireGardener(upLeft);
-                                            rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID(), 6);
+                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID()), 6);
                                         }
                                     } else {
                                         rc.hireGardener(leftDown);
-                                        rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID(), 5);
+                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID()), 5);
                                     }
                                 } else {
                                     rc.hireGardener(downLeft);
-                                    rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID(), 4);
+                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID()), 4);
                                 }
                             } else {
                                 rc.hireGardener(rightDown);
-                                rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID(), 3);
+                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID()), 3);
                             }
                         } else {rc.hireGardener(upRight);
-                            rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID(), 2);
+                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID()), 2);
                         }
                     } else {
                         rc.hireGardener(leftUp);
-                        rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
+                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID()), 1);
                     }
                 }
 
