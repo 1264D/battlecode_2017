@@ -65,7 +65,7 @@ public strictfp class RobotPlayer {
                 float spawnDist = (float)Math.sqrt(9.06949);
 
 
-                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
+                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
 
@@ -172,7 +172,7 @@ public strictfp class RobotPlayer {
                         break;
                 }
 
-
+                }
                     boolean isHome = goHome(home);
                     if (isHome == true){
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
