@@ -144,22 +144,22 @@ public strictfp class RobotPlayer {
             try {
 
 
-                Direction leftCenter;
-                Direction leftUp;
-                Direction leftUpCorner;
-                Direction upCenter;
-                Direction upRight;
-                Direction rightUpCenter;
-                Direction rightCenter;
-                Direction rightDown;
-                Direction rightDownCorner;
-                Direction DownCenter;
-                Direction DownLeft;
-                Direction leftDownCorner;
-                Direction leftDown;
-                Direction upLeft;
-                Direction rightUp;
-                Direction downRight;
+                Direction leftCenter = new Direction(-3,-2);
+                Direction leftUp = new Direction(-3,1);
+                Direction leftUpCorner = new Direction(0,3);
+                Direction upCenter = new Direction(-2,3);
+                Direction upRight = new Direction(1,3);
+                Direction rightUpConer = new Direction(3,0);
+                Direction rightCenter = new Direction(3,2);
+                Direction rightDown = new Direction(3,-1);
+                Direction rightDownCorner = new Direction(0,-3);
+                Direction DownCenter = new Direction(2,-3);
+                Direction DownLeft = new Direction(-1,-3);
+                Direction leftDownCorner = new Direction(-3,0);
+                Direction leftDown = new Direction(-3,-1);
+                Direction upLeft = new Direction(-1,3);
+                Direction rightUp = new Direction(3,1);
+                Direction downRight = new Direction(1,-3);
 
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
