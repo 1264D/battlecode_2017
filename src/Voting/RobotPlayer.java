@@ -152,14 +152,15 @@ public strictfp class RobotPlayer {
                 Direction rightCenter = new Direction(3,2);
                 Direction rightDown = new Direction(3,-1);
                 Direction rightDownCorner = new Direction(0,-3);
-                Direction DownCenter = new Direction(2,-3);
-                Direction DownLeft = new Direction(-1,-3);
+                Direction downCenter = new Direction(2,-3);
+                Direction downLeft = new Direction(-1,-3);
                 Direction leftDownCorner = new Direction(-3,0);
                 Direction leftDown = new Direction(-3,-1);
                 Direction upLeft = new Direction(-1,3);
                 Direction rightUp = new Direction(3,1);
                 Direction downRight = new Direction(1,-3);
 
+                float GardX=rc.getLocation().x;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
                 MapLocation home = new MapLocation(0,0);
@@ -193,17 +194,96 @@ public strictfp class RobotPlayer {
                 }
 
                     boolean isHome = goHome(home);
-                    if (isHome == true){
+                    if (isHome == true) {
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY + 5)) != null) {
+
+                                        } else {
+                                            rc.plantTree(leftUpCorner);
+                                        }
+                                    } else {
+                                        rc.plantTree(leftUp);
+                                    }
+                                } else {
+                                    rc.plantTree(leftCenter);
+                                }
+                                break;
                             case 2:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY + 8)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY + 8)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY + 5)) != null) {
+
+                                        } else {
+                                            rc.plantTree(rightUpCorner);
+                                        }
+                                    } else {
+                                        rc.plantTree(upRight);
+                                    }
+                                } else {
+                                    rc.plantTree(upCenter);
+                                }
+                                break;
                             case 3:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY - 3)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY - 5)) != null) {
+
+                                        } else {
+                                            rc.plantTree(rightDownCorner);
+                                        }
+                                    } else {
+                                        rc.plantTree(rightDown);
+                                    }
+                                } else {
+                                    rc.plantTree(rightCenter);
+                                }
+                                break;
                             case 4:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY - 8)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX - 3, ArcY - 8)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
+
+                                        } else {
+                                            rc.plantTree(leftDownCorner);
+                                        }
+                                    } else {
+                                        rc.plantTree(downLeft);
+                                    }
+                                } else {
+                                    rc.plantTree(downCenter);
+                                }
+                                break;
                             case 5:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY - 3)) != null) {
+
+                                } else {
+                                    rc.plantTree(leftDown);
+                                }
+                                break;
                             case 6:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 3, ArcY + 8)) != null) {
+
+                                } else {
+                                    rc.plantTree(upLeft);
+                                }
+                                break;
                             case 7:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY + 3)) != null) {
+
+                                } else {
+                                    rc.plantTree(rightUp);
+                                }
+                                break;
                             case 8:
-                            default:
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY - 8)) != null) {
+
+                                } else {
+                                    rc.plantTree(downRight);
+                                }
+                                break;
 
                         }
 
