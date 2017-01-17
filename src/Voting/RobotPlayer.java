@@ -173,7 +173,6 @@ public strictfp class RobotPlayer {
                         break;
                 }
 
-                }
                     boolean isHome = goHome(home);
                     if (isHome == true){
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
@@ -194,7 +193,7 @@ public strictfp class RobotPlayer {
 
 
                 if(rc.getRoundNum() == 2){
-                        //rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
+                        rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
 
                 }
 
