@@ -68,9 +68,7 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
-                if(rc.getRoundNum() == 5) {
-                    rc.hireGardener(leftUp);
-                }
+
 
                 /*
                 if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)) != null ) {
@@ -149,35 +147,37 @@ public strictfp class RobotPlayer {
                 MapLocation home = new MapLocation(0,0);
                 switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                     case 1:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX - 5, ArcY + 2);
                         break;
                     case 2:
-                        home = new MapLocation(ArcX+2, ArcY+5);
+                        home = new MapLocation(ArcX + 2, ArcY + 5);
                         break;
                     case 3:
-                        home = new MapLocation(ArcX+5, ArcY-2);
+                        home = new MapLocation(ArcX + 5, ArcY - 2);
                         break;
                     case 4:
-                        home = new MapLocation(ArcX-2, ArcY-5);
+                        home = new MapLocation(ArcX - 2, ArcY - 5);
                         break;
                     case 5:
-                        home = new MapLocation(ArcX-5, ArcY-2);
+                        home = new MapLocation(ArcX - 5, ArcY - 2);
                         break;
                     case 6:
-                        home = new MapLocation(ArcX-2, ArcY+5);
+                        home = new MapLocation(ArcX - 2, ArcY + 5);
                         break;
                     case 7:
-                        home = new MapLocation(ArcX+5, ArcY+2);
+                        home = new MapLocation(ArcX + 5, ArcY + 2);
                         break;
                     case 8:
-                        home = new MapLocation(ArcX+2, ArcY-5);
+                        home = new MapLocation(ArcX + 2, ArcY - 5);
                         break;
+                }
 
 
                     boolean isHome = goHome(home);
                     if (isHome == true){
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
+
                             case 2:
                             case 3:
                             case 4:
@@ -191,8 +191,7 @@ public strictfp class RobotPlayer {
 
                     }
 
-                float myloc = rc.getLocation().x;
-                System.out.println(myloc);
+
                 if(rc.getRoundNum() == 2){
                         //rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
 
