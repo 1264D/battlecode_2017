@@ -149,7 +149,23 @@ public strictfp class RobotPlayer {
                 switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                     case 1:
                         MapLocation home = new MapLocation(ArcX-5, ArcY+2);
-                        goHome(home);
+                    case 2:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 3:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 4:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 5:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 6:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 7:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                    case 8:
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+
+
+                    boolean isHome = goHome(home);
 
                 }
 
