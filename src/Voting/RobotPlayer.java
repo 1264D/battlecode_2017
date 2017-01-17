@@ -60,8 +60,9 @@ public strictfp class RobotPlayer {
                 Direction upLeft = new Direction(-2, 5); //loc 6
                 Direction rightUp = new Direction(5, 2); //loc 7
                 Direction downRight = new Direction(2, -5); //loc 8
-                float fiveTwo = (float)(Math.sqrt(29.0));
-                float fourOne = (float) (Math.sqrt(17.0));
+                float fiveTwo = (float)Math.sqrt(29.0);
+                float fourOne = (float)Math.sqrt(17.0);
+                float spawnDist = (float)Math.sqrt(9.06949);
                 MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
 
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
@@ -70,8 +71,8 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 5) {
                     rc.hireGardener(leftUp);
                 }
-                if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, (float)Math.sqrt(9.061949))) != null ) {
-                    System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, (float)Math.sqrt(9.061949))));
+                if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)) != null ) {
+                    System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)));
                 }
 
 /*
@@ -90,30 +91,30 @@ public strictfp class RobotPlayer {
                                                     rc.hireGardener(downRight);
                                                     rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID(), 8);
                                                 }
-                                            } else{
+                                            } else {
                                                 rc.hireGardener(rightUp);
                                                 rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID(), 7);
                                             }
-                                        } else{
+                                        } else {
                                             rc.hireGardener(upLeft);
                                             rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID(), 6);
                                         }
-                                    } else{
+                                    } else {
                                         rc.hireGardener(leftDown);
                                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID(), 5);
                                     }
-                                } else{
+                                } else {
                                     rc.hireGardener(downLeft);
                                     rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID(), 4);
                                 }
-                            } else{
+                            } else {
                                 rc.hireGardener(rightDown);
                                 rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID(), 3);
                             }
-                        } else{rc.hireGardener(upRight);
+                        } else {rc.hireGardener(upRight);
                             rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID(), 2);
                         }
-                    } else{
+                    } else {
                         rc.hireGardener(leftUp);
                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
                     }
@@ -214,6 +215,10 @@ public strictfp class RobotPlayer {
     public static void wander() throws GameActionException {
         Direction dir = randomDirection();
         tryMove(dir);
+    }
+
+    public static void IDScrub(int ID) throws GameActionException {
+        cleanID
     }
 
 
