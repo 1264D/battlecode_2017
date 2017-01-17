@@ -233,9 +233,13 @@ public strictfp class RobotPlayer {
         return cleanID;
     }
 
-    public static void goHome(MapLocation homeLoc) throws GameActionException {
+    public static boolean goHome(MapLocation homeLoc) throws GameActionException {
         if (rc.getLocation().x != homeLoc.x && rc.getLocation().y != homeLoc.y) {
             rc.move(homeLoc);
+            return false;
+        }
+        else {
+            return true;
         }
     }
 
