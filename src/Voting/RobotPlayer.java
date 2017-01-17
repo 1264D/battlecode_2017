@@ -146,31 +146,31 @@ public strictfp class RobotPlayer {
                 Direction dir = Direction.WEST;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
-                MapLocation home;
+                MapLocation home = new MapLocation(0,0);
                 switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                     case 1:
                         home = new MapLocation(ArcX-5, ArcY+2);
                         break;
                     case 2:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX+2, ArcY+5);
                         break;
                     case 3:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX+5, ArcY-2);
                         break;
                     case 4:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX-2, ArcY-5);
                         break;
                     case 5:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX-5, ArcY-2);
                         break;
                     case 6:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX-2, ArcY+5);
                         break;
                     case 7:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX+5, ArcY+2);
                         break;
                     case 8:
-                        home = new MapLocation(ArcX-5, ArcY+2);
+                        home = new MapLocation(ArcX+2, ArcY-5);
                         break;
 
 
