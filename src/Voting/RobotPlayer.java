@@ -123,6 +123,7 @@ public strictfp class RobotPlayer {
                         rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).getID()), 1);
                     }
                 }
+                System.out.println(Clock.getBytecodesLeft());
 
 
                 Clock.yield();
