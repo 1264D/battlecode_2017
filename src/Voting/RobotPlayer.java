@@ -63,7 +63,7 @@ public strictfp class RobotPlayer {
                 float fiveTwo = (float)Math.sqrt(29.0);
                 float fourOne = (float)Math.sqrt(17.0);
                 float spawnDist = (float)Math.sqrt(9.06949);
-                MapLocation testLoc = rc.getLocation().add(leftUp, fiveTwo);
+
 
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
@@ -73,6 +73,8 @@ public strictfp class RobotPlayer {
                 }
                 if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)) != null ) {
                     int newSpawnID = rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).ID;
+
+
                     System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)));
                 }
 
@@ -90,34 +92,34 @@ public strictfp class RobotPlayer {
 
                                                 } else {
                                                     rc.hireGardener(downRight);
-                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID()), 8);
+                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, spawnDist)).getID()), 8);
                                                 }
                                             } else {
                                                 rc.hireGardener(rightUp);
-                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fourOne)).getID()), 7);
+                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, spawnDist)).getID()), 7);
                                             }
                                         } else {
                                             rc.hireGardener(upLeft);
-                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fourOne)).getID()), 6);
+                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, spawnDist)).getID()), 6);
                                         }
                                     } else {
                                         rc.hireGardener(leftDown);
-                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fourOne)).getID()), 5);
+                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, spawnDist)).getID()), 5);
                                     }
                                 } else {
                                     rc.hireGardener(downLeft);
-                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fourOne)).getID()), 4);
+                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, spawnDist)).getID()), 4);
                                 }
                             } else {
                                 rc.hireGardener(rightDown);
-                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fourOne)).getID()), 3);
+                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, spawnDist)).getID()), 3);
                             }
                         } else {rc.hireGardener(upRight);
-                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fourOne)).getID()), 2);
+                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, spawnDist)).getID()), 2);
                         }
                     } else {
                         rc.hireGardener(leftUp);
-                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID()), 1);
+                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).getID()), 1);
                     }
                 }
 
