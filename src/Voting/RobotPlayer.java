@@ -149,7 +149,7 @@ public strictfp class RobotPlayer {
                 Direction leftUpCorner = new Direction(0,3);
                 Direction upCenter = new Direction(-2,3);
                 Direction upRight = new Direction(1,3);
-                Direction rightUpConer = new Direction(3,0);
+                Direction rightUpCorner = new Direction(3,0);
                 Direction rightCenter = new Direction(3,2);
                 Direction rightDown = new Direction(3,-1);
                 Direction rightDownCorner = new Direction(0,-3);
