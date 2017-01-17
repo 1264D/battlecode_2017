@@ -61,7 +61,6 @@ public strictfp class RobotPlayer {
                 Direction rightUp = new Direction(5, 2); //loc 7
                 Direction downRight = new Direction(2, -5); //loc 8
                 float fiveTwo = (float)Math.sqrt(29.0);
-                float fourOne = (float)Math.sqrt(17.0);
                 float spawnDist = (float)Math.sqrt(9.06949);
 
 
