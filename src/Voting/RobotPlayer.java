@@ -174,8 +174,22 @@ public strictfp class RobotPlayer {
                         break;
 
 
-                }
-                boolean isHome = goHome(home);
+                    boolean isHome = goHome(home);
+                    if (isHome == true){
+                        switch (rc.readBroadcast(IDScrub(rc.getID()))) {
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                            case 8:
+                            default:
+
+                        }
+
+                    }
 
                 float myloc = rc.getLocation().x;
                 System.out.println(myloc);
