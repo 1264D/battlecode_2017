@@ -148,10 +148,8 @@ public strictfp class RobotPlayer {
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
                 switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                     case 1:
-                        MapLocation home = new MapLocation(ArcX-5, ArcY+2)
-                        if (rc.getLocation().x != (ArcX-5.0) && rc.getLocation().y != ArcY+2.0) {
-
-                        }
+                        MapLocation home = new MapLocation(ArcX-5, ArcY+2);
+                        goHome(home);
 
                 }
 
@@ -233,6 +231,12 @@ public strictfp class RobotPlayer {
     public static int IDScrub(int ID) throws GameActionException {
         int cleanID = ID % 1000;
         return cleanID;
+    }
+
+    public static void goHome(MapLocation homeLoc) throws GameActionException {
+        if (rc.getLocation().x != homeLoc.x && rc.getLocation().y != homeLoc.y) {
+            rc.move(homeLoc);
+        }
     }
 
 
