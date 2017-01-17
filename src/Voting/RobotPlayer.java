@@ -72,6 +72,7 @@ public strictfp class RobotPlayer {
                     rc.hireGardener(leftUp);
                 }
                 if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)) != null ) {
+                    int newSpawnID = rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).ID;
                     System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)));
                 }
 
@@ -217,8 +218,9 @@ public strictfp class RobotPlayer {
         tryMove(dir);
     }
 
-    public static void IDScrub(int ID) throws GameActionException {
-        cleanID
+    public static int IDScrub(int ID) throws GameActionException {
+        int cleanID = ID % 1000;
+        return cleanID;
     }
 
 
