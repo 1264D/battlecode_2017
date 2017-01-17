@@ -142,10 +142,30 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                Direction dir = Direction.WEST;
+
+
+                Direction leftCenter;
+                Direction leftUp;
+                Direction leftUpCorner;
+                Direction upCenter;
+                Direction upRight;
+                Direction rightUpCenter;
+                Direction rightCenter;
+                Direction rightDown;
+                Direction rightDownCorner;
+                Direction DownCenter;
+                Direction DownLeft;
+                Direction leftDownCorner;
+                Direction leftDown;
+                Direction upLeft;
+                Direction rightUp;
+                Direction downRight;
+
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
                 MapLocation home = new MapLocation(0,0);
+
+
                 switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                     case 1:
                         home = new MapLocation(ArcX - 5, ArcY + 2);
@@ -177,7 +197,6 @@ public strictfp class RobotPlayer {
                     if (isHome == true){
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
-
                             case 2:
                             case 3:
                             case 4:
