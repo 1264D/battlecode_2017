@@ -76,7 +76,7 @@ public strictfp class RobotPlayer {
                     System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)));
                 }
 
-/*
+
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
 
                     if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
@@ -90,7 +90,7 @@ public strictfp class RobotPlayer {
 
                                                 } else {
                                                     rc.hireGardener(downRight);
-                                                    rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID(), 8);
+                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fourOne)).getID()), 8);
                                                 }
                                             } else {
                                                 rc.hireGardener(rightUp);
@@ -120,7 +120,7 @@ public strictfp class RobotPlayer {
                         rc.broadcast(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fourOne)).getID(), 1);
                     }
                 }
-                */
+
 
                 Clock.yield();
 
