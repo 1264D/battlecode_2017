@@ -71,12 +71,15 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 5) {
                     rc.hireGardener(leftUp);
                 }
+
+                /*
                 if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)) != null ) {
                     int newSpawnID = rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).ID;
 
 
-                    System.out.println(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)));
+
                 }
+                */
 
 
                 if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
@@ -143,7 +146,11 @@ public strictfp class RobotPlayer {
                 Direction dir = Direction.WEST;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
-                //if (rc.getLocation() != )
+                switch (rc.readBroadcast(IDScrub(rc.getID()))) {
+                    case 1:
+                        if (rc.getLocation() != [ArcX-5.0,ArcY+2.0])
+                        System.out.println(rc.getLocation());
+                }
 
                 float myloc = rc.getLocation().x;
                 System.out.println(myloc);
