@@ -143,7 +143,6 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
 
-
                 Direction leftCenter = new Direction(-3,-2);
                 Direction leftUp = new Direction(-3,1);
                 Direction leftUpCorner = new Direction(0,3);
@@ -213,7 +212,6 @@ public strictfp class RobotPlayer {
 
                 if(rc.getRoundNum() == 2){
                         rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
-
                 }
 
                 Clock.yield();
