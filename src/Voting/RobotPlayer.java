@@ -61,8 +61,8 @@ public strictfp class RobotPlayer {
                 Direction rightUp = new Direction(5, 2); //loc 7
                 Direction downRight = new Direction(2, -5); //loc 8
                 float fiveTwo = (float)Math.sqrt(29.0);
-                float fourOne = (float)Math.sqrt(17.0);
-                float spawnDist = (float)Math.sqrt(9.06949);
+                //float fourOne = (float)Math.sqrt(17.0);
+                //float spawnDist = (float)Math.sqrt(9.06949);
 
 
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
@@ -188,7 +188,7 @@ public strictfp class RobotPlayer {
                 Direction downRight = new Direction(1,-3);
 
 
-                float GardX=rc.getLocation().x;
+                //float GardX=rc.getLocation().x;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
                 float ArcY = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.y;
                 MapLocation home = new MapLocation(0,0);
