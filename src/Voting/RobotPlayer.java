@@ -80,16 +80,17 @@ public strictfp class RobotPlayer {
                 */
 
                 //if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
-                  if(rc.getID() == rc.readBroadcast(ARCHON_ID) && rc.getRoundNum() != 1) {
+                //System.out.println("take" + rc.isLocationOccupied(rc.getLocation().add(upRight, fiveTwo)));
+                if(rc.getID() == rc.readBroadcast(ARCHON_ID) && rc.getRoundNum() != 1) {
                     if (rc.getTeamBullets() >= 100) {
-                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null || !rc.canHireGardener(leftUp)) {
-                            if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null || !rc.canHireGardener(upRight)) {
-                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null || !rc.canHireGardener(rightDown)) {
-                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null || !rc.canHireGardener(downLeft)) {
-                                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null || !rc.canHireGardener(leftDown)) {
-                                            if (rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null || !rc.canHireGardener(upLeft)) {
-                                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null || !rc.canHireGardener(rightUp)) {
-                                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null || !rc.canHireGardener(downRight)) {
+                        if (rc.isLocationOccupied(rc.getLocation().add(leftUp, fiveTwo)) == true || !rc.canHireGardener(leftUp)) {
+                            if (rc.isLocationOccupied(rc.getLocation().add(upRight, fiveTwo)) == true || !rc.canHireGardener(upRight)) {
+                                if (rc.isLocationOccupied(rc.getLocation().add(rightDown, fiveTwo)) == true || !rc.canHireGardener(rightDown)) {
+                                    if (rc.isLocationOccupied(rc.getLocation().add(downLeft, fiveTwo)) == true || !rc.canHireGardener(downLeft)) {
+                                        if (rc.isLocationOccupied(rc.getLocation().add(leftDown, fiveTwo)) == true || !rc.canHireGardener(leftDown)) {
+                                            if (rc.isLocationOccupied(rc.getLocation().add(upLeft, fiveTwo)) == true || !rc.canHireGardener(upLeft)) {
+                                                if (rc.isLocationOccupied(rc.getLocation().add(rightUp, fiveTwo)) == true || !rc.canHireGardener(rightUp)) {
+                                                    if (rc.isLocationOccupied(rc.getLocation().add(downRight, fiveTwo)) == true || !rc.canHireGardener(downRight)) {
 
                                                     } else {
                                                         tryHire(downRight,8);
@@ -410,7 +411,7 @@ public strictfp class RobotPlayer {
 
     public static boolean goHome(MapLocation homeLoc) throws GameActionException {
         if (rc.getLocation().x != homeLoc.x && rc.getLocation().y != homeLoc.y) {
-            rc.move(homeLoc);
+            if (rc.canMove(homeLoc)) { rc.move(homeLoc); }
             return false;
         }
         else {
