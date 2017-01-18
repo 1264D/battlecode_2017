@@ -215,7 +215,7 @@ public strictfp class RobotPlayer {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY + 5)) != null) {
 
                                         } else {
-                                            rc.plantTree(leftUpCorner);
+                                            rc.plantTree();
                                         }
                                     } else {
                                         rc.plantTree(leftUp);
