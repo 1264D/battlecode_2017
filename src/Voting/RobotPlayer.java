@@ -80,47 +80,49 @@ public strictfp class RobotPlayer {
                 */
 
 
-                if(rc.getID() == rc.readBroadcast(ARCHON_ID)){
+                if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
+                    if (rc.getTeamBullets() >= 100) {
+                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null) {
+                            if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null) {
+                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null) {
+                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null) {
+                                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null) {
+                                            if (rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null) {
+                                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null) {
+                                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null) {
 
-                    if(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null){
-                        if(rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null){
-                            if(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null){
-                                if(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null){
-                                    if(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null){
-                                        if(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null){
-                                            if(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null){
-                                                if(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null){
-
+                                                    } else {
+                                                        rc.hireGardener(downRight);
+                                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, spawnDist)).getID()), 8);
+                                                    }
                                                 } else {
-                                                    rc.hireGardener(downRight);
-                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, spawnDist)).getID()), 8);
+                                                    rc.hireGardener(rightUp);
+                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, spawnDist)).getID()), 7);
                                                 }
                                             } else {
-                                                rc.hireGardener(rightUp);
-                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, spawnDist)).getID()), 7);
+                                                rc.hireGardener(upLeft);
+                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, spawnDist)).getID()), 6);
                                             }
                                         } else {
-                                            rc.hireGardener(upLeft);
-                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, spawnDist)).getID()), 6);
+                                            rc.hireGardener(leftDown);
+                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, spawnDist)).getID()), 5);
                                         }
                                     } else {
-                                        rc.hireGardener(leftDown);
-                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, spawnDist)).getID()), 5);
+                                        rc.hireGardener(downLeft);
+                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, spawnDist)).getID()), 4);
                                     }
                                 } else {
-                                    rc.hireGardener(downLeft);
-                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, spawnDist)).getID()), 4);
+                                    rc.hireGardener(rightDown);
+                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, spawnDist)).getID()), 3);
                                 }
                             } else {
-                                rc.hireGardener(rightDown);
-                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, spawnDist)).getID()), 3);
+                                rc.hireGardener(upRight);
+                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, spawnDist)).getID()), 2);
                             }
-                        } else {rc.hireGardener(upRight);
-                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, spawnDist)).getID()), 2);
+                        } else {
+                            rc.hireGardener(leftUp);
+                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).getID()), 1);
                         }
-                    } else {
-                        rc.hireGardener(leftUp);
-                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).getID()), 1);
                     }
                 }
                 System.out.println(Clock.getBytecodesLeft());
@@ -143,22 +145,32 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
 
-                Direction leftCenter = new Direction(-3,-2);
+
+                //Gard 1
+                Direction up = new Direction(0,3);
                 Direction leftUp = new Direction(-3,1);
-                Direction leftUpCorner = new Direction(0,3);
-                Direction upCenter = new Direction(-2,3);
+                Direction leftDown2 = new Direction(-3,-2);
+                //Gard 2
+                Direction right = new Direction(3,0);
                 Direction upRight = new Direction(1,3);
-                Direction rightUpCorner = new Direction(3,0);
-                Direction rightCenter = new Direction(3,2);
-                Direction rightDown = new Direction(3,-1);
-                Direction rightDownCorner = new Direction(0,-3);
-                Direction downCenter = new Direction(2,-3);
-                Direction downLeft = new Direction(-1,-3);
-                Direction leftDownCorner = new Direction(-3,0);
+                Direction upLeft2 = new Direction(-2,3);
+                //Gard 3
+                Direction leftCenter = new Direction(-3,-2);
+                Direction leftCenter = new Direction(-3,-2);
+                Direction leftCenter = new Direction(-3,-2);
+                //Gard 4
+                Direction leftCenter = new Direction(-3,-2);
+                Direction leftCenter = new Direction(-3,-2);
+                Direction leftCenter = new Direction(-3,-2);
+                //Gard 5
                 Direction leftDown = new Direction(-3,-1);
+                //Gard 6
                 Direction upLeft = new Direction(-1,3);
-                Direction rightUp = new Direction(3,1);
-                Direction downRight = new Direction(1,-3);
+                //Gard 7
+                Direction leftCenter = new Direction(-3,-2);
+                //Gard 8
+                Direction leftCenter = new Direction(-3,-2);
+
 
                 float GardX=rc.getLocation().x;
                 float ArcX = rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location.x;
@@ -195,7 +207,10 @@ public strictfp class RobotPlayer {
 
                     boolean isHome = goHome(home);
                     if (isHome == true) {
-                        switch (rc.readBroadcast(IDScrub(rc.getID()))) {
+                        if (rc.readBroadcast(IDScrub(rc.getID())) == 1) {
+                            rc.plantTree(leftUpCorner);
+                        }
+                        /*switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
                                     if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
@@ -285,7 +300,7 @@ public strictfp class RobotPlayer {
                                 }
                                 break;
 
-                        }
+                        }*/
 
                     }
 
