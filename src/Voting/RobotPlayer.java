@@ -80,7 +80,7 @@ public strictfp class RobotPlayer {
                 */
 
 
-                if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
+                  if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
                     if (rc.getTeamBullets() >= 100) {
                         if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null) {
                             if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null) {
@@ -178,7 +178,7 @@ public strictfp class RobotPlayer {
                 //Gard 7
                 Direction rightUp = new Direction( 3,1);
                 //Gard 8
-                Direction downRight = new Direction(-3,1);
+                Direction downRight = new Direction(1,-3);
 
 
                 float GardX=rc.getLocation().x;
