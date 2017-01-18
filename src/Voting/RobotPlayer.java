@@ -207,10 +207,8 @@ public strictfp class RobotPlayer {
 
                     boolean isHome = goHome(home);
                     if (isHome == true) {
-                        if (rc.readBroadcast(IDScrub(rc.getID())) == 1) {
-                            rc.plantTree(leftUpCorner);
-                        }
-                        /*switch (rc.readBroadcast(IDScrub(rc.getID()))) {
+
+                        switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
                                     if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
@@ -300,7 +298,7 @@ public strictfp class RobotPlayer {
                                 }
                                 break;
 
-                        }*/
+                        }
 
                     }
 
