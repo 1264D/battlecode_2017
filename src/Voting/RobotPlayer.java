@@ -137,6 +137,10 @@ public strictfp class RobotPlayer {
                       //    }
                       //}
                 }
+
+                if(rc.getID() != rc.readBroadcast(ARCHON_ID)){
+                      dodge();
+                }
                 System.out.println(Clock.getBytecodesLeft());
 
 
