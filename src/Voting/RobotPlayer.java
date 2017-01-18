@@ -219,9 +219,9 @@ public strictfp class RobotPlayer {
 
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
-                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
-                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
-                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY + 5)) != null) {
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
 
                                         } else {
                                             tryPlant(leftUp);
@@ -235,9 +235,9 @@ public strictfp class RobotPlayer {
                                 }
                                 break;
                             case 2:
-                                if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY + 8)) != null) {
-                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY + 8)) != null) {
-                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY + 5)) != null) {
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY + 5)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX , ArcY + 8)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY + 8)) != null) {
 
                                         } else {
                                             tryPlant(upRight);
@@ -318,7 +318,7 @@ public strictfp class RobotPlayer {
                         for(TreeInfo t : trees){
                             System.out.println(t.getID());
                             if(rc.canWater(t.getID())) {
-                                if (t.getHealth() < t.getMaxHealth()) {
+                                if (t.getHealth() <= (t.getMaxHealth()-1.5) {
                                     rc.water(t.getID());
                                     System.out.println(t.getHealth());
                                     System.out.println(t.getMaxHealth());
