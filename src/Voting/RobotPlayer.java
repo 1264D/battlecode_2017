@@ -240,13 +240,13 @@ public strictfp class RobotPlayer {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY + 5)) != null) {
 
                                         } else {
-                                            rc.plantTree(upRight);
+                                            tryPlant(upRight);
                                         }
                                     } else {
-                                        rc.plantTree(upLeft2);
+                                        tryPlant(upLeft2);
                                     }
                                 } else {
-                                    rc.plantTree(right);
+                                    tryPlant(right);
                                 }
                                 break;
                             case 3:
@@ -255,13 +255,13 @@ public strictfp class RobotPlayer {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY - 5)) != null) {
 
                                         } else {
-                                            rc.plantTree(rightDown);
+                                            tryPlant(rightDown);
                                         }
                                     } else {
-                                        rc.plantTree(rightUp2);
+                                        tryPlant(rightUp2);
                                     }
                                 } else {
-                                    rc.plantTree(down);
+                                    tryPlant(down);
                                 }
                                 break;
                             case 4:
@@ -270,41 +270,41 @@ public strictfp class RobotPlayer {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
 
                                         } else {
-                                            rc.plantTree(downLeft);
+                                            tryPlant(downLeft);
                                         }
                                     } else {
-                                        rc.plantTree(downRight2);
+                                        tryPlant(downRight2);
                                     }
                                 } else {
-                                    rc.plantTree(left);
+                                    tryPlant(left);
                                 }
                                 break;
                             case 5:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY - 3)) != null) {
 
                                 } else {
-                                    rc.plantTree(leftDown);
+                                    tryPlant(leftDown);
                                 }
                                 break;
                             case 6:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX - 3, ArcY + 8)) != null) {
 
                                 } else {
-                                    rc.plantTree(upLeft);
+                                    tryPlant(upLeft);
                                 }
                                 break;
                             case 7:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY + 3)) != null) {
 
                                 } else {
-                                    rc.plantTree(rightUp);
+                                    tryPlant(rightUp);
                                 }
                                 break;
                             case 8:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY - 8)) != null) {
 
                                 } else {
-                                    rc.plantTree(downRight);
+                                    tryPlant(downRight);
                                 }
                                 break;
 
