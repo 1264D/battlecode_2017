@@ -126,7 +126,7 @@ public strictfp class RobotPlayer {
                               rc.donate(10);
                           }
                       }
-                      if (rc.getTeamBullets() >= 120) {
+                      if (rc.getTeamBullets() >= 120 && rc.getRoundNum() >= 10) {
                           while (rc.getTeamBullets() >= 120){
                               rc.donate(10);
                           }
