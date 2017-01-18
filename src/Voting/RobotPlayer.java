@@ -250,9 +250,9 @@ public strictfp class RobotPlayer {
                                 }
                                 break;
                             case 3:
-                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY)) != null) {
-                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY - 3)) != null) {
-                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY - 5)) != null) {
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY - 5)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY - 3)) != null) {
 
                                         } else {
                                             tryPlant(rightDown);
@@ -265,9 +265,9 @@ public strictfp class RobotPlayer {
                                 }
                                 break;
                             case 4:
-                                if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY - 8)) != null) {
-                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX - 3, ArcY - 8)) != null) {
-                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
+                                if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
+                                    if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY - 8)) != null) {
+                                        if (rc.senseTreeAtLocation(new MapLocation(ArcX - 3, ArcY - 8)) != null) {
 
                                         } else {
                                             tryPlant(downLeft);
