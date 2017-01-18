@@ -82,57 +82,60 @@ public strictfp class RobotPlayer {
 
                   if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
                     if (rc.getTeamBullets() >= 100) {
-                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null) {
-                            if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null) {
-                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null) {
-                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null) {
-                                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null) {
-                                            if (rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null) {
-                                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null) {
-                                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null) {
-                                                        if(rc.getTeamBullets() >= 90 && rc.getTreeCount() >= 12){
-                                                            while (rc.getTeamBullets() >= 90) {
-                                                                rc.donate(10);
-                                                            }
-                                                        }
-                                                        if (rc.getTeamBullets() >= 120) {
-                                                            while (rc.getTeamBullets() >= 120){
-                                                                rc.donate(10);
-                                                            }
-                                                        }
+                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null || !rc.canHireGardener(leftUp)) {
+                            if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null || !rc.canHireGardener(upRight)) {
+                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightDown, fiveTwo)) != null || !rc.canHireGardener(rightDown)) {
+                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downLeft, fiveTwo)) != null || !rc.canHireGardener(downLeft)) {
+                                        if (rc.senseRobotAtLocation(rc.getLocation().add(leftDown, fiveTwo)) != null || !rc.canHireGardener(leftDown)) {
+                                            if (rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null || !rc.canHireGardener(upLeft)) {
+                                                if (rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null || !rc.canHireGardener(rightUp)) {
+                                                    if (rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null || !rc.canHireGardener(downRight)) {
+
                                                     } else {
-                                                        rc.hireGardener(downRight);
-                                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, spawnDist)).getID()), 8);
+                                                        tryHire(downRight,8);
                                                     }
                                                 } else {
-                                                    rc.hireGardener(rightUp);
-                                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, spawnDist)).getID()), 7);
+                                                    tryHire(rightUp,7);
+
                                                 }
                                             } else {
-                                                rc.hireGardener(upLeft);
-                                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, spawnDist)).getID()), 6);
+                                                tryHire(upLeft,6);
+
                                             }
                                         } else {
-                                            rc.hireGardener(leftDown);
-                                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftDown, spawnDist)).getID()), 5);
+                                            tryHire(leftDown,5);
+
                                         }
                                     } else {
-                                        rc.hireGardener(downLeft);
-                                        rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downLeft, spawnDist)).getID()), 4);
+                                        tryHire(downLeft,4);
+
                                     }
                                 } else {
-                                    rc.hireGardener(rightDown);
-                                    rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(rightDown, spawnDist)).getID()), 3);
+                                    tryHire(rightDown,3);
+
                                 }
                             } else {
-                                rc.hireGardener(upRight);
-                                rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(upRight, spawnDist)).getID()), 2);
+                                tryHire(upRight,2);
                             }
                         } else {
-                            rc.hireGardener(leftUp);
-                            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(leftUp, spawnDist)).getID()), 1);
+                            tryHire(leftUp,1);
                         }
                     }
+                      if(rc.getTeamBullets() >= 90 && rc.getTreeCount() >= 12){
+                          while (rc.getTeamBullets() >= 90) {
+                              rc.donate(10);
+                          }
+                      }
+                      if (rc.getTeamBullets() >= 120) {
+                          while (rc.getTeamBullets() >= 120){
+                              rc.donate(10);
+                          }
+                      }
+                      //if (rc.getTeamBullets() >= 250) {
+                      //    while (rc.getTeamBullets() >= 250){
+                      //        rc.donate(130);
+                      //    }
+                      //}
                 }
                 System.out.println(Clock.getBytecodesLeft());
 
@@ -419,6 +422,15 @@ public strictfp class RobotPlayer {
     public static void tryPlant(Direction where) throws GameActionException {
         if(rc.canPlantTree(where)) {
             rc.plantTree(where);
+        }
+    }
+
+    public static void tryHire(Direction direc,int locID) throws GameActionException {
+        float spawnDist = (float)Math.sqrt(9.06949);
+
+        if (rc.canHireGardener(direc)) {
+            rc.hireGardener(direc);
+            rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(direc, spawnDist)).getID()), locID);
         }
     }
 
