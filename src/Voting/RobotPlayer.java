@@ -90,7 +90,9 @@ public strictfp class RobotPlayer {
                                         if(rc.senseRobotAtLocation(rc.getLocation().add(upLeft, fiveTwo)) != null){
                                             if(rc.senseRobotAtLocation(rc.getLocation().add(rightUp, fiveTwo)) != null){
                                                 if(rc.senseRobotAtLocation(rc.getLocation().add(downRight, fiveTwo)) != null){
-
+                                                    if(rc.getTeamBullets() > 50 && rc.getTreeCount() >= 16){
+                                                        rc.donate(10);
+                                                    }
                                                 } else {
                                                     rc.hireGardener(downRight);
                                                     rc.broadcast(IDScrub(rc.senseRobotAtLocation(rc.getLocation().add(downRight, spawnDist)).getID()), 8);
@@ -286,7 +288,15 @@ public strictfp class RobotPlayer {
                                 break;
 
                         }
-
+                        TreeInfo[] trees = rc.senseNearbyTrees();
+                        for(TreeInfo t : trees){
+                            System.out.println(t.getID());
+                            if(t.getHealth() < t.getMaxHealth()){
+                                rc.water(t.getID());
+                                System.out.println(t.getHealth());
+                                System.out.println(t.getMaxHealth());
+                            }
+                        }
                     }
 
 
