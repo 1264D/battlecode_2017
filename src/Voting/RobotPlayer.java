@@ -64,8 +64,8 @@ public strictfp class RobotPlayer {
                 //float fourOne = (float)Math.sqrt(17.0);
                 //float spawnDist = (float)Math.sqrt(9.06949);
 
-
-                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
+                //if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) == 0){
+                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
 
@@ -79,8 +79,8 @@ public strictfp class RobotPlayer {
                 }
                 */
 
-
-                  if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
+                //if(rc.getID() == rc.readBroadcast(ARCHON_ID)) {
+                  if(rc.getID() == rc.readBroadcast(ARCHON_ID) && rc.getRoundNum() != 1) {
                     if (rc.getTeamBullets() >= 100) {
                         if (rc.senseRobotAtLocation(rc.getLocation().add(leftUp, fiveTwo)) != null || !rc.canHireGardener(leftUp)) {
                             if (rc.senseRobotAtLocation(rc.getLocation().add(upRight, fiveTwo)) != null || !rc.canHireGardener(upRight)) {
@@ -131,11 +131,6 @@ public strictfp class RobotPlayer {
                               rc.donate(10);
                           }
                       }
-                      //if (rc.getTeamBullets() >= 250) {
-                      //    while (rc.getTeamBullets() >= 250){
-                      //        rc.donate(130);
-                      //    }
-                      //}
                 }
 
                 if(rc.getID() != rc.readBroadcast(ARCHON_ID)){
@@ -333,8 +328,8 @@ public strictfp class RobotPlayer {
                         }
                     }
 
-
-                if(rc.getRoundNum() == 2){
+                //if(rc.getRoundNum() == 2){
+                if(rc.getRoundNum() == 3){
                         rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
                 }
 
