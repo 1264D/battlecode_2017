@@ -318,7 +318,7 @@ public strictfp class RobotPlayer {
                         for(TreeInfo t : trees){
                             System.out.println(t.getID());
                             if(rc.canWater(t.getID())) {
-                                if (t.getHealth() <= (t.getMaxHealth()-1.5) {
+                                if (t.getHealth() <= (t.getMaxHealth()-1.5)) {
                                     rc.water(t.getID());
                                     System.out.println(t.getHealth());
                                     System.out.println(t.getMaxHealth());
