@@ -215,17 +215,17 @@ public strictfp class RobotPlayer {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY + 5)) != null) {
 
                                         } else {
-                                            if(rc.canPlantTree(up)) {rc.plantTree(up);}
+                                            tryPlant(up);
 
                                         }
                                     } else {
-                                        rc.plantTree(leftUp);
+                                        tryPlant(leftUp);
                                     }
                                 } else {
-                                    rc.plantTree(leftDown2);
+                                    tryPlant(leftDown2);
                                 }
                                 break;
-                            case 2:
+                            /*case 2:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX, ArcY + 8)) != null) {
                                     if (rc.senseTreeAtLocation(new MapLocation(ArcX + 3, ArcY + 8)) != null) {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX + 5, ArcY + 5)) != null) {
@@ -298,6 +298,11 @@ public strictfp class RobotPlayer {
                                     rc.plantTree(downRight);
                                 }
                                 break;
+
+                                */
+
+
+
 
                         }
                         TreeInfo[] trees = rc.senseNearbyTrees();
@@ -396,6 +401,12 @@ public strictfp class RobotPlayer {
         }
         else {
             return true;
+        }
+    }
+
+    public static void tryPlant(Direction where) throws GameActionException {
+        if(rc.canPlantTree(where)) {
+            rc.plantTree(where);
         }
     }
 
