@@ -217,15 +217,15 @@ public strictfp class RobotPlayer {
                         break;
                 }
 
-                    boolean isHome = goHome(home);
-                    if (isHome == true) {
+                    //boolean isHome = goHome(home);
+                    if (goHome(home) == true) {
 
                         switch (rc.readBroadcast(IDScrub(rc.getID()))) {
                             case 1:
                                 if (rc.senseTreeAtLocation(new MapLocation(ArcX - 5, ArcY - 5)) != null) {
                                     if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY)) != null) {
                                         if (rc.senseTreeAtLocation(new MapLocation(ArcX - 8, ArcY + 3)) != null) {
-                                            System.out.println("we are seeing tree ID: " +  rc.senseTreeAtLocation(new MapLocation(ArcX + 8, ArcY - 3)).getID());
+
                                         } else {
                                             tryPlant(leftUp);
                                         }
@@ -405,7 +405,7 @@ public strictfp class RobotPlayer {
     }
 
     public static int IDScrub(int ID) throws GameActionException {
-        int cleanID = ID % 1000;
+        int cleanID = ID % 1001;
         return cleanID;
     }
 
