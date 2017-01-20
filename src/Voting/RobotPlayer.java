@@ -348,13 +348,46 @@ public strictfp class RobotPlayer {
     static void runScout() throws GameActionException {
         while(1==1){
             try{
+
+
+                List nearTrees = new ArrayList();
+                TreeInfo[] trerres = rc.senseNearbyTrees();
+                for (TreeInfo p : trerres){
+                    if (p.getContainedBullets() != 0) {
+                        nearTrees.add(p.getID());
+                    }
+                }
+
+                if(nearTrees.size() == 0){
+                    wander();
+                    rc.setIndicatorDot(rc.getLocation(),180,0,0);
+                }
+                if (nearTrees.size() != 0 ){
+                    if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) > 2.5) {
+                        rc.setIndicatorDot(rc.getLocation(), 0, 180, 0);
+
+                        rc.move(rc.senseTree((int) nearTrees.get(0)).getLocation());
+                    }
+                    if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) < 2.5) {
+                        rc.setIndicatorDot(rc.getLocation(), 0, 50, 150);
+
+                        rc.shake((int) nearTrees.get(0));
+                    }
+
+
+
+                }
+
+/*
                 TreeInfo[] trees = rc.senseNearbyTrees();
                 for(TreeInfo t : trees){
                     if(rc.canShake(t.getLocation())){
                         rc.shake(t.getLocation());
                     }
                 }
-                wander();
+                wander(); */
+
+                Clock.yield();
             }
             catch(Exception e){
                 System.out.println("Scout Exception");
