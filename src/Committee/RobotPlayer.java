@@ -93,7 +93,7 @@ public strictfp class RobotPlayer {
                 if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
                     rc.setIndicatorDot(rc.getLocation(), 0, 186, 90);
                     rc.broadcast(IDScrub(rc.getID()),10);
-                    plantSequence(rc.getLocation());
+                    plantSequence();
                 }
 
 
@@ -228,19 +228,19 @@ public strictfp class RobotPlayer {
         }
     }
 
-    public static void plantSequence(MapLocation robLoc) throws GameActionException {
-        if(rc.isLocationOccupiedByTree(new MapLocation(-2,3))) {
+    public static void plantSequence() throws GameActionException {
+        if(!rc.isLocationOccupiedByTree(new MapLocation(-2,3))) {
             tryPlant(new Direction(-2,3));
-        } else { if(rc.isLocationOccupiedByTree(new MapLocation(2,-3))) {
-
-            } else { if(rc.isLocationOccupiedByTree(new MapLocation(1,3))) {
-
-                } else { if(rc.isLocationOccupiedByTree(new MapLocation(-1,-3))){
-
-                    } else { if(rc.isLocationOccupiedByTree(new MapLocation(3,0))){
-
-                        } else { if(rc.isLocationOccupiedByTree(new MapLocation(-3,0))){
-
+        } else { if(!rc.isLocationOccupiedByTree(new MapLocation(2,-3))) {
+                tryPlant(new Direction(2,-3));
+            } else { if(!rc.isLocationOccupiedByTree(new MapLocation(1,3))) {
+                    tryPlant(new Direction(1,3));
+                } else { if(!rc.isLocationOccupiedByTree(new MapLocation(-1,-3))){
+                        tryPlant(new Direction(-1,-3));
+                    } else { if(!rc.isLocationOccupiedByTree(new MapLocation(3,0))){
+                            tryPlant(new Direction(3,0));
+                        } else { if(!rc.isLocationOccupiedByTree(new MapLocation(-3,0))){
+                                tryPlant(new Direction(-3,0));
                             } else {
                                 System.out.println("I'm done");
                             }
