@@ -438,8 +438,7 @@ public strictfp class RobotPlayer {
     }
 
     public static int IDScrub(int ID) throws GameActionException {
-        int cleanID = ID % 1001;
-        return cleanID;
+        return ID % 10001;
     }
 
     public static boolean goHome(MapLocation homeLoc) throws GameActionException {
