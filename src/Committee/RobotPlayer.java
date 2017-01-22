@@ -326,12 +326,17 @@ public strictfp class RobotPlayer {
 
     static void dodge() throws GameActionException {
         BulletInfo[] bullets = rc.senseNearbyBullets();
+        RobotInfo[] robots = rc.senseNearbyRobots();
         for (BulletInfo bi : bullets) {
             if (willCollideWithMe(bi)) {
                 trySidestep(bi);
             }
         }
-
+        for(RobotInfo r : robots){
+            if(r.getTeam() != rc.getTeam()){
+                tryMove( new Direction(r.getLocation(),rc.getLocation()));
+            }
+        }
     }
 
 }
