@@ -77,7 +77,7 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
                 if(rc.getRoundNum() == 2){
-                    rc.buildRobot(RobotType.SCOUT, Direction.SOUTH);
+                    rc.buildRobot(RobotType.SCOUT, Direction.NORTH);
                 }
 
 
@@ -104,7 +104,7 @@ public strictfp class RobotPlayer {
                 List nearTrees = new ArrayList();
                 TreeInfo[] trerres = rc.senseNearbyTrees();
                 for (TreeInfo p : trerres){
-                    if (p.getContainedBullets() != 0) {
+                    if (p.getContainedBullets() > 0) {
                         nearTrees.add(p.getID());
                     }
                 }
@@ -116,12 +116,12 @@ public strictfp class RobotPlayer {
                 if (nearTrees.size() != 0 ){
                     if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) > 2.5) {
                         rc.setIndicatorDot(rc.getLocation(), 0, 180, 0);
-
-                        rc.move(rc.senseTree((int) nearTrees.get(0)).getLocation());
+                        System.out.println(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()));
+                        tryMove(new Direction(rc.getLocation(),rc.senseTree((int)nearTrees.get(0)).getLocation()));
                     }
                     if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) < 2.5) {
                         rc.setIndicatorDot(rc.getLocation(), 0, 50, 150);
-
+                        System.out.println(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()));
                         rc.shake((int) nearTrees.get(0));
                     }
 

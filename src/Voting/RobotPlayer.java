@@ -124,12 +124,12 @@ public strictfp class RobotPlayer {
                     }
                       if(rc.getTeamBullets() >= 90 && rc.getTreeCount() >= 12){
                           while (rc.getTeamBullets() >= 90) {
-                              rc.donate(10);
+                              rc.donate((float)(7.5 + (rc.getRoundNum()*(12.5/3000))));
                           }
                       }
                       if (rc.getTeamBullets() >= 120 && rc.getRoundNum() >= 10) {
                           while (rc.getTeamBullets() >= 120){
-                              rc.donate(10);
+                              rc.donate((float)(7.5 + (rc.getRoundNum()*(12.5/3000))));
                           }
                       }
                 }
@@ -331,7 +331,7 @@ public strictfp class RobotPlayer {
 
                 //if(rc.getRoundNum() == 2){
                 if(rc.getRoundNum() == 3){
-                        rc.buildRobot(RobotType.SCOUT,Direction.NORTH);
+                        rc.buildRobot(RobotType.SCOUT,Direction.SOUTH);
                 }
 
 
@@ -365,12 +365,12 @@ public strictfp class RobotPlayer {
                 if (nearTrees.size() != 0 ){
                     if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) > 2.5) {
                         rc.setIndicatorDot(rc.getLocation(), 0, 180, 0);
-
-                        rc.move(rc.senseTree((int) nearTrees.get(0)).getLocation());
+                        System.out.println(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()));
+                        tryMove(new Direction(rc.getLocation(),rc.senseTree((int)nearTrees.get(0)).getLocation()));
                     }
                     if(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()) < 2.5) {
                         rc.setIndicatorDot(rc.getLocation(), 0, 50, 150);
-
+                        System.out.println(rc.getLocation().distanceTo(rc.senseTree((int)nearTrees.get(0)).getLocation()));
                         rc.shake((int) nearTrees.get(0));
                     }
 
