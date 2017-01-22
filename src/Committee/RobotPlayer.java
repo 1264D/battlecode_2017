@@ -57,9 +57,11 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
                     rc.broadcast(ARCHON_ID, rc.getID());
                 }
-                if (rc.getRoundNum() == 2){
-                    rc.hireGardener(Direction.EAST);
+                if(rc.getID() == rc.readBroadcast(ARCHON_ID) && rc.getRoundNum() != 1) {
+                    if (rc.getRoundNum() == 2) {
+                        rc.hireGardener(Direction.EAST);
 
+                    }
                 }
 
 
