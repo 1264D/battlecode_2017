@@ -199,7 +199,10 @@ public strictfp class RobotPlayer {
     }
 
     public static void wander() throws GameActionException {
-        Direction dir = randomDirection();
+        Direction dir = rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location);
+        while(dir.getAngleDegrees() < rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location).getAngleDegrees() - 45 || dir.getAngleDegrees() > rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location).getAngleDegrees() + 45){
+             dir = randomDirection();
+        }
         tryMove(dir);
     }
 
