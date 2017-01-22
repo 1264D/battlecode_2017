@@ -79,14 +79,15 @@ public strictfp class RobotPlayer {
                 if(rc.getRoundNum() == 2){
                     rc.buildRobot(RobotType.SCOUT, Direction.NORTH);
                 }
-                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),4) && rc.readBroadcast(IDScrub(rc.getID())) != 10){
+                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) && rc.readBroadcast(IDScrub(rc.getID())) != 10){
                     wander();
                     rc.setIndicatorDot(rc.getLocation(), 200, 6, 10);
 
                 }
-                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),4) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
+                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
                     rc.setIndicatorDot(rc.getLocation(), 0, 186, 90);
                     rc.broadcast(IDScrub(rc.getID()),10);
+                    plantSequence(rc.getLocation());
                 }
 
 
@@ -216,6 +217,10 @@ public strictfp class RobotPlayer {
         if(rc.canPlantTree(where)) {
             rc.plantTree(where);
         }
+    }
+
+    public static void plantSequence(MapLocation robLoc) throws GameActionException {
+        if(rc.isLocationOccupiedByTree(new MapLocation()))
     }
 
     public static void tryHire(Direction direc,int locID) throws GameActionException {
