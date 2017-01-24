@@ -94,6 +94,17 @@ public strictfp class RobotPlayer {
                     rc.setIndicatorDot(rc.getLocation(), 0, 186, 90);
                     rc.broadcast(IDScrub(rc.getID()),10);
                     plantSequence(rc.getLocation());
+                    TreeInfo[] trees = rc.senseNearbyTrees(2);
+                    for(TreeInfo t : trees){
+                        //System.out.println(t.getID());
+                        if(rc.canWater(t.getID())) {
+                            if (t.getHealth() <= (t.getMaxHealth()-4.5)) {
+                                rc.water(t.getID());
+                                //System.out.println(t.getHealth());
+                                //System.out.println(t.getMaxHealth());
+                            }
+                        }
+                    }
                 }
 
 
@@ -237,19 +248,19 @@ public strictfp class RobotPlayer {
         float spawnX = (float)1.005;
         float spawnY = (float)1.74;
 
-        if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)) == null) {
+        if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(2.0/3))))) {
             tryPlant(new Direction((float)((Math.PI)*(2.0/3))));
             System.out.println(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)));
-        } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,-spawnY)) == null) {
+        } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,-spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(5.0/3))))) {
                 tryPlant(new Direction((float)((Math.PI)*(5.0/3))));
-            } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,spawnY)) == null) {
+            } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(1.0/3))))) {
                     tryPlant(new Direction((float)((Math.PI)*(1.0/3))));
 
-                } else { if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,-spawnY)) == null){
+                } else { if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,-spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(4.0/3))))){
                         tryPlant(new Direction((float)((Math.PI)*(4.0/3))));
-                    } else { if(rc.senseTreeAtLocation(robLoc.translate((float)1.01,0)) == null){
+                    } else { if(rc.senseTreeAtLocation(robLoc.translate((float)1.01,0)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(6.0/3))))){
                             tryPlant(new Direction((float)((Math.PI)*(6.0/3))));
-                        } else { if(rc.senseTreeAtLocation(robLoc.translate((float)-1.01,0)) == null){
+                        } else { if(rc.senseTreeAtLocation(robLoc.translate((float)-1.01,0)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(3.0/3))))){
                                 tryPlant(new Direction((float)((Math.PI)*(3.0/3))));
                             } else {
                                 System.out.println("I'm done");
