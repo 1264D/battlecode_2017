@@ -248,19 +248,18 @@ public strictfp class RobotPlayer {
         float spawnX = (float)1.005;
         float spawnY = (float)1.74;
 
-        if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(2.0/3))))) {
+        if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(2.0/3))))) {
             tryPlant(new Direction((float)((Math.PI)*(2.0/3))));
-            System.out.println(rc.senseTreeAtLocation(robLoc.translate(-spawnX,spawnY)));
-        } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,-spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(5.0/3))))) {
+        } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,-spawnY)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(5.0/3))))) {
                 tryPlant(new Direction((float)((Math.PI)*(5.0/3))));
-            } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(1.0/3))))) {
+            } else { if(rc.senseTreeAtLocation(robLoc.translate(spawnX,spawnY)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(1.0/3))))) {
                     tryPlant(new Direction((float)((Math.PI)*(1.0/3))));
 
-                } else { if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,-spawnY)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(4.0/3))))){
+                } else { if(rc.senseTreeAtLocation(robLoc.translate(-spawnX,-spawnY)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(4.0/3))))){
                         tryPlant(new Direction((float)((Math.PI)*(4.0/3))));
-                    } else { if(rc.senseTreeAtLocation(robLoc.translate((float)1.01,0)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(6.0/3))))){
+                    } else { if(rc.senseTreeAtLocation(robLoc.translate((float)1.01,0)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(6.0/3))))){
                             tryPlant(new Direction((float)((Math.PI)*(6.0/3))));
-                        } else { if(rc.senseTreeAtLocation(robLoc.translate((float)-1.01,0)) == null || rc.canPlantTree(new Direction((float)((Math.PI)*(3.0/3))))){
+                        } else { if(rc.senseTreeAtLocation(robLoc.translate((float)-1.01,0)) == null && rc.canPlantTree(new Direction((float)((Math.PI)*(3.0/3))))){
                                 tryPlant(new Direction((float)((Math.PI)*(3.0/3))));
                             } else {
                                 System.out.println("I'm done");
