@@ -54,11 +54,6 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                    if (rc.getRoundNum() == 1) {
-                        rc.hireGardener(Direction.EAST);
-                    }
-
-
 
 
                 Clock.yield();
@@ -85,7 +80,7 @@ public strictfp class RobotPlayer {
                     rc.setIndicatorDot(rc.getLocation(), 200, 6, 10);
 
                 }
-                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
+                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),7) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
                     rc.setIndicatorDot(rc.getLocation(), 0, 186, 90);
                     rc.broadcast(IDScrub(rc.getID()),10);
                     plantSequence(rc.getLocation());
