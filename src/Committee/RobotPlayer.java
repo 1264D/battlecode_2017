@@ -67,9 +67,10 @@ public strictfp class RobotPlayer {
                 GARD_NUM = rc.getRobotCount() - (numOfArc + scoutNum);
                 System.out.println(GARD_NUM);
                 float currentBulletCost = (float)(7.5 + (rc.getRoundNum()*(12.5/3000)));
+
                 Direction hireDir = randomDirection();
                 int stuck = 0;
-                while(!rc.canHireGardener(hireDir) || stuck >= 100){
+                while(!rc.canHireGardener(hireDir) || stuck >= 25){
                     hireDir = randomDirection();
                     stuck += 1;
                 }
@@ -107,16 +108,16 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                if(rc.getRoundNum() == 2 {
-                    Direction hireDir = randomDirection();
+                if(rc.getRoundNum() == 2) {
+                    Direction spawnDir = randomDirection();
                     int stuck = 0;
 
-                    while (!rc.canBuildRobot(RobotType.SCOUT, hireDir) || stuck >= 100) {
-                        hireDir = randomDirection();
+                    while (!rc.canBuildRobot(RobotType.SCOUT, spawnDir) || stuck >= 25) {
+                        spawnDir = randomDirection();
                         stuck += 1;
                     }
-                    if (GARD_NUM < 4 && rc.canBuildRobot(RobotType.SCOUT, hireDir)) {
-                        rc.buildRobot(RobotType.SCOUT, hireDir);
+                    if (GARD_NUM < 4 && rc.canBuildRobot(RobotType.SCOUT, spawnDir)) {
+                        rc.buildRobot(RobotType.SCOUT, spawnDir);
                     }
                 }
                 if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) && rc.readBroadcast(IDScrub(rc.getID())) != 10){
