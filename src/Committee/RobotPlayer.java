@@ -77,7 +77,7 @@ public strictfp class RobotPlayer {
                     hireDir = randomDirection();
                     stuck += 1;
                 }
-                if (GARD_NUM < 9 && rc.canHireGardener(hireDir) && rc.senseNearbyRobots(15).length <= 3){
+                if (GARD_NUM < 9 && rc.canHireGardener(hireDir) && rc.senseNearbyRobots(12).length <= 2){
                     rc.hireGardener(hireDir);
                 }
                 System.out.println("Posthire bytes:" + Clock.getBytecodesLeft());
@@ -91,7 +91,7 @@ public strictfp class RobotPlayer {
                         rc.donate(currentBulletCost);
                     }
                 }
-                if (rc.getTeamBullets() >= 200 && rc.getRoundNum() >= 8) {
+                if (rc.getTeamBullets() >= 190 && rc.getRoundNum() >= 8) {
                     while (rc.getTeamBullets() >= 160){
                         rc.donate(currentBulletCost);
                     }
