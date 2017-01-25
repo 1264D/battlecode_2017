@@ -276,6 +276,15 @@ public strictfp class RobotPlayer {
                 nearestArc = a;
             }
         }
+        //below is beginning of wander to avoid trees in the way
+        /*TreeInfo[] nearTrees = rc.senseNearbyTrees(5);
+        for(MapLocation a : archons){
+            if (a.distanceTo(rc.getLocation()) < nearestDistance){
+                nearestDistance = a.distanceTo(rc.getLocation());
+                nearestArc = a;
+            }
+        }*/
+
         if(rc.canSenseLocation(nearestArc) && nearestArc != rc.getLocation()) {
             Direction dir = rc.getLocation().directionTo(nearestArc);
             //if (rc.getType() == RobotType.SCOUT) {
