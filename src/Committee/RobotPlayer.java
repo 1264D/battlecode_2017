@@ -12,6 +12,8 @@ public strictfp class RobotPlayer {
     static Random myRand;
     static int ARCHON_ID = 1;
     static int GLOCATION = 2;
+    static int DEAD_SCOUT_SWITCH = 35;
+    static int GARD_NUM = 0;
 
     /**
      * run() is the method that is called when a robot is instantiated in the Battlecode world.
@@ -54,6 +56,33 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
+                int scoutNum;
+                int numOfArc = rc.getInitialArchonLocations(rc.getTeam()).length;
+                if (rc.readBroadcast(DEAD_SCOUT_SWITCH) < (rc.getRoundNum() - 2)){
+                    scoutNum = 0;
+                } else {
+                    scoutNum = 1;
+                }
+
+                GARD_NUM = rc.getRobotCount() - (numOfArc + scoutNum);
+                System.out.println(GARD_NUM);
+                float currentBulletCost = (float)(7.5 + (rc.getRoundNum()*(12.5/3000)));
+                if (GARD_NUM < 4 && rc.canHireGardener(Direction.EAST)){
+                    rc.hireGardener(Direction.EAST);
+                }
+                if(rc.getTeamBullets() >= 275 && rc.getTreeCount() >= 12){
+                    while (rc.getTeamBullets() >= 90) {
+                        rc.donate(currentBulletCost);
+                    }
+                }
+                if (rc.getTeamBullets() >= 125 && rc.getRoundNum() >= 8) {
+                    while (rc.getTeamBullets() >= 120){
+                        rc.donate(currentBulletCost);
+                    }
+                }
+                if (rc.getRoundNum() == (rc.getRoundLimit()-1)){
+                    rc.donate(rc.getTeamBullets());
+                }
 
 
                 Clock.yield();
@@ -80,7 +109,7 @@ public strictfp class RobotPlayer {
                     rc.setIndicatorDot(rc.getLocation(), 200, 6, 10);
 
                 }
-                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),7) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
+                if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) != true || rc.readBroadcast(IDScrub(rc.getID())) == 10){
                     rc.setIndicatorDot(rc.getLocation(), 0, 186, 90);
                     rc.broadcast(IDScrub(rc.getID()),10);
                     plantSequence(rc.getLocation());
@@ -125,6 +154,8 @@ public strictfp class RobotPlayer {
                         nearTrees.add(p.getID());
                     }
                 }
+
+                rc.broadcast(DEAD_SCOUT_SWITCH,rc.getRoundNum());
 
                 if(nearTrees.size() == 0){
                     wander();
