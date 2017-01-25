@@ -67,16 +67,20 @@ public strictfp class RobotPlayer {
                 GARD_NUM = rc.getRobotCount() - (numOfArc + scoutNum);
                 System.out.println(GARD_NUM);
                 float currentBulletCost = (float)(7.5 + (rc.getRoundNum()*(12.5/3000)));
+                System.out.println("Robot count= " + rc.getRobotCount());
+                System.out.println("Scout dead= " + scoutNum);
 
                 Direction hireDir = randomDirection();
                 int stuck = 0;
-                while(!rc.canHireGardener(hireDir) || stuck >= 25){
+                System.out.println("Prewhiel bytes:" + Clock.getBytecodesLeft());
+                while(!rc.canHireGardener(hireDir) && stuck < 51){
                     hireDir = randomDirection();
                     stuck += 1;
                 }
-                if (GARD_NUM < 4 && rc.canHireGardener(hireDir)){
+                if (GARD_NUM < 7 && rc.canHireGardener(hireDir)){
                     rc.hireGardener(hireDir);
                 }
+                System.out.println("Posthire bytes:" + Clock.getBytecodesLeft());
                 if(rc.getTeamBullets() >= 275 && rc.getTreeCount() >= 12){
                     while (rc.getTeamBullets() >= 90) {
                         rc.donate(currentBulletCost);
@@ -112,7 +116,7 @@ public strictfp class RobotPlayer {
                     Direction spawnDir = randomDirection();
                     int stuck = 0;
 
-                    while (!rc.canBuildRobot(RobotType.SCOUT, spawnDir) || stuck >= 25) {
+                    while (!rc.canBuildRobot(RobotType.SCOUT, spawnDir) && stuck < 51) {
                         spawnDir = randomDirection();
                         stuck += 1;
                     }
