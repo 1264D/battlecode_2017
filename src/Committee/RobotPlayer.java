@@ -77,7 +77,7 @@ public strictfp class RobotPlayer {
                     hireDir = randomDirection();
                     stuck += 1;
                 }
-                if (GARD_NUM < 7 && rc.canHireGardener(hireDir)){
+                if (GARD_NUM < 7 && rc.canHireGardener(hireDir) && rc.senseNearbyRobots(15).length <= 4){
                     rc.hireGardener(hireDir);
                 }
                 System.out.println("Posthire bytes:" + Clock.getBytecodesLeft());
@@ -256,20 +256,26 @@ public strictfp class RobotPlayer {
 
     public static void wander() throws GameActionException {
         MapLocation[] archons = rc.getInitialArchonLocations(rc.getTeam());
-        float greatestDistance = 0;
-        MapLocation greatestMap = rc.getLocation();
+        //System.out.println(archons);
+        //System.out.println(archons[1].y);
+        float nearestDistance = 1000;
+        MapLocation nearestArc = rc.getLocation();
         for(MapLocation a : archons){
-            if (a.distanceTo(rc.getLocation()) > greatestDistance){
-                greatestDistance = a.distanceTo(rc.getLocation());
-                greatestMap = a;
+            if (a.distanceTo(rc.getLocation()) < nearestDistance){
+                nearestDistance = a.distanceTo(rc.getLocation());
+                nearestArc = a;
             }
         }
-        if(rc.canSenseLocation(greatestMap)) {
-            Direction dir = rc.getLocation().directionTo(greatestMap);
-            while (dir.getAngleDegrees() > rc.getLocation().directionTo(greatestMap).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(greatestMap).getAngleDegrees() + 45) {
-                dir = randomDirection();
+        if(rc.canSenseLocation(nearestArc) && nearestArc != rc.getLocation()) {
+            Direction dir = rc.getLocation().directionTo(nearestArc);
+            if (rc.getType() == RobotType.SCOUT) {
+                while (dir.getAngleDegrees() > rc.getLocation().directionTo(nearestArc).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(nearestArc).getAngleDegrees() + 45) {
+                    dir = randomDirection();
+                }
+                tryMove(dir);
+            } else {
+                tryMove(dir.opposite());
             }
-            tryMove(dir);
         }
         else{
             tryMove(randomDirection());
