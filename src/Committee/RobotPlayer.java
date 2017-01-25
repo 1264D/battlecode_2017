@@ -287,14 +287,19 @@ public strictfp class RobotPlayer {
 
         if(rc.canSenseLocation(nearestArc) && nearestArc != rc.getLocation()) {
             Direction dir = rc.getLocation().directionTo(nearestArc);
-            //if (rc.getType() == RobotType.SCOUT) {
+            if (rc.getType() == RobotType.SCOUT || nearestArc.distanceTo(rc.getLocation()) >= 7) {
                 while (dir.getAngleDegrees() > rc.getLocation().directionTo(nearestArc).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(nearestArc).getAngleDegrees() + 45) {
                     dir = randomDirection();
                 }
                 tryMove(dir);
-            //} else {
-             //   tryMove(dir.opposite());
-            //}
+            } else {
+                if (rc.canMove(dir.opposite())) {
+                    tryMove(dir.opposite());
+                } else {
+                    tryMove(randomDirection());
+                }
+            }
+
         }
         else{
             tryMove(randomDirection());
