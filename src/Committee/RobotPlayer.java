@@ -54,15 +54,10 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                if(rc.getRoundNum() == 1 && rc.readBroadcast(ARCHON_ID) <= rc.getID()){
-                    rc.broadcast(ARCHON_ID, rc.getID());
-                }
-                if(rc.getID() == rc.readBroadcast(ARCHON_ID) && rc.getRoundNum() != 1) {
-                    if (rc.getRoundNum() == 2) {
+                    if (rc.getRoundNum() == 1) {
                         rc.hireGardener(Direction.EAST);
-
                     }
-                }
+
 
 
 
@@ -82,7 +77,7 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-                if(rc.getRoundNum() == 3){
+                if(rc.getRoundNum() == 2){
                     rc.buildRobot(RobotType.SCOUT, Direction.NORTH);
                 }
                 if (rc.isCircleOccupiedExceptByThisRobot(rc.getLocation(),5) && rc.readBroadcast(IDScrub(rc.getID())) != 10){
@@ -212,9 +207,18 @@ public strictfp class RobotPlayer {
     }
 
     public static void wander() throws GameActionException {
-        if(rc.canSenseRobot(ARCHON_ID)) {
-            Direction dir = rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location);
-            while (dir.getAngleDegrees() > rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(rc.senseRobot(rc.readBroadcast(ARCHON_ID)).location).getAngleDegrees() + 45) {
+        MapLocation[] archons = rc.getInitialArchonLocations(rc.getTeam());
+        float greatestDistance = 0;
+        MapLocation greatestMap = rc.getLocation();
+        for(MapLocation a : archons){
+            if (a.distanceTo(rc.getLocation()) > greatestDistance){
+                greatestDistance = a.distanceTo(rc.getLocation());
+                greatestMap = a;
+            }
+        }
+        if(rc.canSenseLocation(greatestMap)) {
+            Direction dir = rc.getLocation().directionTo(greatestMap);
+            while (dir.getAngleDegrees() > rc.getLocation().directionTo(greatestMap).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(greatestMap).getAngleDegrees() + 45) {
                 dir = randomDirection();
             }
             tryMove(dir);
