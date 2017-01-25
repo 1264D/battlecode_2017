@@ -77,17 +77,27 @@ public strictfp class RobotPlayer {
                     hireDir = randomDirection();
                     stuck += 1;
                 }
-                if (GARD_NUM < 7 && rc.canHireGardener(hireDir) && rc.senseNearbyRobots(15).length <= 4){
+                if (GARD_NUM < 9 && rc.canHireGardener(hireDir) && rc.senseNearbyRobots(15).length <= 3){
                     rc.hireGardener(hireDir);
                 }
                 System.out.println("Posthire bytes:" + Clock.getBytecodesLeft());
-                if(rc.getTeamBullets() >= 275 && rc.getTreeCount() >= 12){
-                    while (rc.getTeamBullets() >= 90) {
+                if(rc.getTeamBullets() >= 125 && rc.getTreeCount() >= 14 && GARD_NUM >= 9){
+                    while (rc.getTeamBullets() >= 75) {
                         rc.donate(currentBulletCost);
                     }
                 }
-                if (rc.getTeamBullets() >= 125 && rc.getRoundNum() >= 8) {
-                    while (rc.getTeamBullets() >= 120){
+                if(rc.getTeamBullets() >= 150 && rc.getTreeCount() >= 14 && GARD_NUM < 9){
+                    while (rc.getTeamBullets() >= 125) {
+                        rc.donate(currentBulletCost);
+                    }
+                }
+                if (rc.getTeamBullets() >= 200 && rc.getRoundNum() >= 8) {
+                    while (rc.getTeamBullets() >= 160){
+                        rc.donate(currentBulletCost);
+                    }
+                }
+                if(rc.getTeamBullets() >= 75 && rc.getTreeCount() >= 25){
+                    while (rc.getTeamBullets() >= 50) {
                         rc.donate(currentBulletCost);
                     }
                 }
@@ -268,14 +278,14 @@ public strictfp class RobotPlayer {
         }
         if(rc.canSenseLocation(nearestArc) && nearestArc != rc.getLocation()) {
             Direction dir = rc.getLocation().directionTo(nearestArc);
-            if (rc.getType() == RobotType.SCOUT) {
+            //if (rc.getType() == RobotType.SCOUT) {
                 while (dir.getAngleDegrees() > rc.getLocation().directionTo(nearestArc).getAngleDegrees() - 45 && dir.getAngleDegrees() < rc.getLocation().directionTo(nearestArc).getAngleDegrees() + 45) {
                     dir = randomDirection();
                 }
                 tryMove(dir);
-            } else {
-                tryMove(dir.opposite());
-            }
+            //} else {
+             //   tryMove(dir.opposite());
+            //}
         }
         else{
             tryMove(randomDirection());
